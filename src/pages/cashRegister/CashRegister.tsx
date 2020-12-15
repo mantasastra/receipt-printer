@@ -42,18 +42,14 @@ const CashRegister = () => {
         );
         console.log(isExempt);
 
-        const priceWithBaseTax = isExempt
-          ? entry.price
-          : round(entry.price + entry.price * data.baseTaxRate);
+        const baseTax = isExempt ? 0 : entry.price * data.baseTaxRate;
 
-        const priceWithImportTax = entry.isImported
-          ? round(priceWithBaseTax + priceWithBaseTax * data.importTaxRate)
-          : priceWithBaseTax;
+        const importTax = entry.isImported
+          ? entry.price * data.importTaxRate
+          : 0;
 
-        const taxApplied = round(
-          (priceWithImportTax - entry.price) * entry.quantity
-        );
-        const taxedPrice = priceWithImportTax * entry.quantity;
+        const taxApplied = round((baseTax + importTax) * entry.quantity);
+        const taxedPrice = round(entry.price * entry.quantity + taxApplied);
 
         return {
           ...entry,
@@ -72,8 +68,8 @@ const CashRegister = () => {
         }: ${entry.taxedPrice}`;
       });
 
-      receipts.push(`Sales Taxes: ${salesTaxes}`);
-      receipts.push(`Total: ${totalPrice}`);
+      receipts.push(`Sales Taxes: ${round(salesTaxes)}`);
+      receipts.push(`Total: ${round(totalPrice)}`);
 
       setReceipt(receipts);
     }
