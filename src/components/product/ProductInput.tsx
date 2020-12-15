@@ -20,7 +20,7 @@ interface FormElements extends HTMLFormControlsCollection {
  * Extracts product description, quantity, price and checks
  * if the product is imported or not.
  *
- * If the supplied data has a wrong format, returns error message.
+ * TODO If the supplied data has a wrong format, returns error message.
  * Otherwise returns an object containing these extracted values.
  *
  * @param data of format 'QTY PRODUCT at PRICE'
@@ -42,8 +42,8 @@ const transformData = (data: HTMLInputElement): Entry => {
   return {
     product,
     quantity,
-    price,
     isImported,
+    price,
   };
 };
 
