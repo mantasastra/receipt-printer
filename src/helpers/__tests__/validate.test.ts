@@ -1,4 +1,4 @@
-import { validate } from "../index";
+import validate from "../validate";
 
 describe("validate", () => {
   it.each`

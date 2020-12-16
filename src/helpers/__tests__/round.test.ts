@@ -1,4 +1,4 @@
-import { round } from "../index";
+import round from "../round";
 
 describe("round", () => {
   it.each`

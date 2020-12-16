@@ -1,9 +1,7 @@
-type ExemptProducts = "book" | "chocolate" | "pills";
-
 export type Data = {
   baseTaxRate: number;
   importTaxRate: number;
-  exemptProductsFromBaseTax: Array<ExemptProducts>;
+  exemptProductsFromBaseTax: Array<string>;
 };
 
 const data: Data = {
