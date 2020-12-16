@@ -68,10 +68,11 @@ const ProductInput: React.FC<Props> = ({ onClick, disable }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form data-testid="product-form" onSubmit={handleSubmit}>
       <label htmlFor="product">Add a Product</label>
 
       <input
+        data-testid="product-entry"
         type="text"
         id="product"
         name="product"
