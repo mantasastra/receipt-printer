@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from "react";
 import styled from "@emotion/styled";
 
-import { Entry } from "../../pages/cashRegister/CashRegister";
+import { Entry, State } from "../../pages/cashRegister/CashRegister";
 
 const Form = styled.form`
   display: flex;
@@ -9,7 +9,7 @@ const Form = styled.form`
 `;
 
 type Props = {
-  onClick: React.Dispatch<React.SetStateAction<Entry[]>>;
+  onClick: React.Dispatch<React.SetStateAction<State>>;
 };
 
 interface FormElements extends HTMLFormControlsCollection {
@@ -55,7 +55,10 @@ const ProductInput: React.FC<Props> = ({ onClick }) => {
     const entry = transformData(product);
     product.value = "";
 
-    onClick((prevState) => [...prevState, entry]);
+    onClick((prevState) => ({
+      ...prevState,
+      entries: [...prevState.entries, entry],
+    }));
   };
 
   return (
