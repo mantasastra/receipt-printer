@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 
 import data from "../../data/data";
-import { calculateTax, createReceipt } from "../../app/index";
+import { calculateTax, createReceipt } from "../../core";
 
 import ProductInput from "../../components/product/ProductInput";
 import Receipt from "../../components/receipt/Receipt";

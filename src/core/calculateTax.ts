@@ -1,6 +1,6 @@
 import { Data } from "../data/data";
 import { Entry, EntryWithTax } from "../pages/cashRegister/CashRegister";
-import { round } from "../helpers/index";
+import { round } from "../helpers";
 
 /**
  * Checks whether base and import tax needs to be applied on a product.
@@ -10,7 +10,7 @@ import { round } from "../helpers/index";
  * @param data - supplied tax data
  * @returns new entries with tax applied
  */
-const calculateTax = (entries: Entry[], data: Data): EntryWithTax[] => {
+export const calculateTax = (entries: Entry[], data: Data): EntryWithTax[] => {
   return entries.map((entry) => {
     const { price: basePrice, quantity } = entry;
 
@@ -30,5 +30,3 @@ const calculateTax = (entries: Entry[], data: Data): EntryWithTax[] => {
     };
   });
 };
-
-export default calculateTax;

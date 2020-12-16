@@ -1,4 +1,4 @@
-import calculateTax from "../calculateTax";
+import { calculateTax } from "../calculateTax";
 
 describe("calculateTax", () => {
   const mockProducts = [

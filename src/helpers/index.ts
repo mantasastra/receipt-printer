@@ -1,4 +1,2 @@
-import round from "./round";
-import validate from "./validate";
-
-export { round, validate };
+export { round } from "./round";
+export { validate } from "./validate";

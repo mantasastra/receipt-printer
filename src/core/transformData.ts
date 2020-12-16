@@ -1,13 +1,21 @@
 import { Entry } from "../pages/cashRegister/CashRegister";
+import { validate } from "../helpers";
 
 /**
  * Extracts product description, quantity, price and checks
  * if the product is imported or not.
  *
- * @param data - validated data
- * @returns an object containing extracted values
+ * @param data
+ * @returns an error or an object containing extracted values
  */
-const transformData = (data: string): Entry => {
+export const transformData = (data: string): Entry => {
+  const isValid = validate(data);
+  if (!isValid) {
+    throw new Error(
+      'Input should be of format: "QTY PRODUCT at PRICE" where PRICE must have 2 decimal places'
+    );
+  }
+
   const productDetails = data.split(" ");
   const isImported = data.search(/imported/i) > 0;
 
@@ -27,5 +35,3 @@ const transformData = (data: string): Entry => {
     price,
   };
 };
-
-export default transformData;

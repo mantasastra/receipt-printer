@@ -2,8 +2,8 @@ import React, { ChangeEvent, useState } from "react";
 import styled from "@emotion/styled";
 
 import { State } from "../../pages/cashRegister/CashRegister";
-import { transformData } from "../../app/index";
-import { validate } from "../../helpers/index";
+import { transformData } from "../../core";
+import { validate } from "../../helpers";
 
 import Error from "../error/Error";
 
@@ -50,23 +50,19 @@ const ProductInput: React.FC<Props> = ({ onClick, disable }) => {
   const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const isValid = validate(input);
-    if (!isValid) {
-      setError(
-        'Input should be of format: "QTY PRODUCT at PRICE" where PRICE must have 2 decimal places'
-      );
-
-      onClick((prevState) => ({
-        ...prevState,
-        isError: true,
-      }));
-    } else {
+    try {
       const entry = transformData(input);
 
       setInput("");
       onClick((prevState) => ({
         ...prevState,
         entries: [...prevState.entries, entry],
+      }));
+    } catch (err) {
+      setError(err.message);
+      onClick((prevState) => ({
+        ...prevState,
+        isError: true,
       }));
     }
   };
