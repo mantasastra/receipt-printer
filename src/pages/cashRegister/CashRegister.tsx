@@ -32,8 +32,6 @@ export type State = {
 };
 
 // TODO Add error handling for input
-// TODO Show zeroes in decimals
-// TODO Add reset functionality
 // TODO Add styles
 // TODO Add tests
 const CashRegister = () => {
@@ -63,12 +61,21 @@ const CashRegister = () => {
     }));
   };
 
+  const handleReset = (): void => {
+    setState({
+      entries: [],
+      receiptData: [],
+      printReceipt: false,
+    });
+  };
+
   return (
     <Container>
       <h1>Cash Register</h1>
       <ProductInput onClick={setState} />
       <button onClick={handleClick}>Print Receipt</button>
       {printReceipt ? <Receipt data={receiptData} /> : null}
+      {printReceipt ? <button onClick={handleReset}>Start again</button> : null}
     </Container>
   );
 };
