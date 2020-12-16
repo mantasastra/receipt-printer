@@ -1,7 +1,8 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useState } from "react";
 import styled from "@emotion/styled";
 
-import { Entry, State } from "../../pages/cashRegister/CashRegister";
+import { State } from "../../pages/cashRegister/CashRegister";
+import { transformData, validate } from "../../helpers/index";
 
 const Form = styled.form`
   display: flex;
@@ -12,61 +13,74 @@ type Props = {
   onClick: React.Dispatch<React.SetStateAction<State>>;
 };
 
-interface FormElements extends HTMLFormControlsCollection {
-  product: HTMLInputElement;
-}
-
-/**
- * Extracts product description, quantity, price and checks
- * if the product is imported or not.
- *
- * TODO If the supplied data has a wrong format, returns error message.
- * Otherwise returns an object containing these extracted values.
- *
- * @param data of format 'QTY PRODUCT at PRICE'
- * where PRODUCT can contain a word `imported`
- */
-const transformData = (data: HTMLInputElement): Entry => {
-  const productDetails = data.value.split(" ");
-  const isImported = data.value.search(/imported/i) > 0;
-
-  const product = productDetails
-    .splice(1, productDetails.length - 3)
-    .join(" ")
-    .replace("imported", "")
-    .replace(/\s+/g, " ")
-    .trim();
-  const quantity = parseInt(productDetails[0]);
-  const price = parseFloat(productDetails[productDetails.length - 1]);
-
-  return {
-    product,
-    quantity,
-    isImported,
-    price,
-  };
-};
-
 const ProductInput: React.FC<Props> = ({ onClick }) => {
-  const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const [input, setInput] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
 
-    const { product } = e.target.elements as FormElements;
-    const entry = transformData(product);
-    product.value = "";
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+
+    const isValid = validate(value);
+    if (isValid) {
+      setError(null);
+
+      onClick((prevState) => ({
+        ...prevState,
+        isError: false,
+      }));
+    }
+
+    setInput(value);
+  };
+
+  const handleClear = () => {
+    setInput("");
+    setError(null);
 
     onClick((prevState) => ({
       ...prevState,
-      entries: [...prevState.entries, entry],
+      isError: false,
     }));
+  };
+
+  const handleSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const isValid = validate(input);
+    if (!isValid) {
+      setError(
+        'Input should be of format: "QTY PRODUCT at PRICE" where PRICE must have 2 decimal places'
+      );
+
+      onClick((prevState) => ({
+        ...prevState,
+        isError: true,
+      }));
+    } else {
+      const entry = transformData(input);
+
+      setInput("");
+      onClick((prevState) => ({
+        ...prevState,
+        entries: [...prevState.entries, entry],
+      }));
+    }
   };
 
   return (
     <Form onSubmit={handleSubmit}>
       <label htmlFor="product">Add a Product</label>
 
-      <input type="text" id="product" name="product" />
-      <input type="submit" value="Add" />
+      <input
+        type="text"
+        id="product"
+        name="product"
+        onChange={handleInput}
+        value={input}
+      />
+      {error ? <p style={{ color: "red" }}>{error}</p> : null}
+      {error ? <button onClick={handleClear}>Clear</button> : null}
+      <input type="submit" value="Add" disabled={error != null} />
     </Form>
   );
 };

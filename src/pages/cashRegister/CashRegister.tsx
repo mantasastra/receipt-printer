@@ -29,9 +29,9 @@ export type State = {
   entries: Entry[];
   receiptData: string[];
   printReceipt: boolean;
+  isError: boolean;
 };
 
-// TODO Add error handling for input
 // TODO Add styles
 // TODO Add tests
 const CashRegister = () => {
@@ -39,8 +39,9 @@ const CashRegister = () => {
     entries: [],
     receiptData: [],
     printReceipt: false,
+    isError: false,
   });
-  const { entries, receiptData, printReceipt } = state;
+  const { entries, receiptData, printReceipt, isError } = state;
 
   useEffect(() => {
     if (printReceipt) {
@@ -66,6 +67,7 @@ const CashRegister = () => {
       entries: [],
       receiptData: [],
       printReceipt: false,
+      isError: false,
     });
   };
 
@@ -73,7 +75,9 @@ const CashRegister = () => {
     <Container>
       <h1>Cash Register</h1>
       <ProductInput onClick={setState} />
-      <button onClick={handleClick}>Print Receipt</button>
+      <button onClick={handleClick} disabled={isError}>
+        Print Receipt
+      </button>
       {printReceipt ? <Receipt data={receiptData} /> : null}
       {printReceipt ? <button onClick={handleReset}>Start again</button> : null}
     </Container>
