@@ -26,7 +26,7 @@ describe("transformData", () => {
 
     const mockData = "__PRODUCT__ 12.99";
     const expectedError = new Error(
-      'Input should be of format: "QTY PRODUCT at PRICE" where PRICE must have 2 decimal places'
+      'Please use this format: "QTY PRODUCT PRICE". (e.g. 1 box of chocolate at 9.99)'
     );
 
     expect(() => transformData(mockData)).toThrowError(expectedError);

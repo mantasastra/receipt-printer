@@ -17,6 +17,9 @@ describe("validate", () => {
     ${"1 1 1"}                                 | ${false}
     ${"imported bottle of perfume at 27.99 1"} | ${false}
     ${"1 bottle of perfume at 18"}             | ${false}
+    ${"1bottle of perfume at 18"}              | ${false}
+    ${"1 bottle of perfume at18"}              | ${false}
+    ${"1   bottle of perfume at   18"}         | ${false}
   `(
     'should validate "$input" against the required format and return $expectedOutput',
     ({ input, expectedOutput }) => {

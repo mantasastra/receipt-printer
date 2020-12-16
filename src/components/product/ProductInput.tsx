@@ -6,18 +6,80 @@ import { transformData } from "../../core";
 import { validate } from "../../helpers";
 
 import Error from "../error/Error";
+import Button from "../button/Button";
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  width: 100%;
+`;
+
+const InputGroup = styled.div`
+  position: relative;
+  margin-bottom: 1.5rem;
+`;
+
+const Input = styled.input<{ isError: string | null }>`
+  width: 100%;
+  border: none;
+  border-bottom: 0.12rem solid rgba(19, 19, 21, 0.6);
+  height: 2rem;
+  font-size: 1.06rem;
+  padding-top: 0.8rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.8rem;
+  line-height: 147.6%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: rgba(73, 133, 224, 0.12);
+    border-color: #121212;
+  }
+
+  &:focus + label,
+  &:valid + label {
+    top: 0;
+    font-size: 0.94rem;
+    margin-bottom: 32px;
+  }
+
+  &:disabled {
+    background: none;
+    border-color: rgba(19, 19, 21, 0.6);
+  }
+
+  ${(props) => (props.isError ? "border-bottom: 0.12rem solid #b50706" : null)}
+`;
+
+const Label = styled.span<{ isError: string | null }>`
+  position: absolute;
+  top: -1.4rem;
+  left: 0.875rem;
+  line-height: 147.6%;
+  color: rgba(19, 19, 21, 0.6);
+
+  ${(props) => (props.isError ? "color: #b50706" : null)}
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  input {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 `;
 
 type Props = {
   onClick: React.Dispatch<React.SetStateAction<State>>;
-  disable: boolean;
+  disabled: boolean;
 };
 
-const ProductInput: React.FC<Props> = ({ onClick, disable }) => {
+const ProductInput: React.FC<Props> = ({ onClick, disabled }) => {
   const [input, setInput] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
@@ -70,19 +132,32 @@ const ProductInput: React.FC<Props> = ({ onClick, disable }) => {
 
   return (
     <Form data-testid="product-form" onSubmit={handleSubmit}>
-      <label htmlFor="product">Add a Product</label>
+      <InputGroup>
+        <label htmlFor="product">
+          <Input
+            data-testid="product-entry"
+            type="text"
+            id="product"
+            name="product"
+            onChange={handleInput}
+            value={input}
+            disabled={disabled}
+            isError={error}
+          />
+          <Label isError={error}>Add a Product</Label>
+          {error ? <Error error={error} handleClear={handleClear} /> : null}
+        </label>
+      </InputGroup>
 
-      <input
-        data-testid="product-entry"
-        type="text"
-        id="product"
-        name="product"
-        onChange={handleInput}
-        value={input}
-        disabled={disable}
-      />
-      {error ? <Error error={error} handleClear={handleClear} /> : null}
-      <input type="submit" value="Add" disabled={error != null || disable} />
+      <ButtonContainer>
+        <Button
+          type="input"
+          text="Add"
+          isError={error != null}
+          disabled={disabled}
+          styles={{ bgColor: "#81c784", textColor: "#fffff" }}
+        />
+      </ButtonContainer>
     </Form>
   );
 };

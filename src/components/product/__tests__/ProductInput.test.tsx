@@ -7,7 +7,7 @@ describe("ProductInput", () => {
   it("should render a form with an input", () => {
     const mockOnClick = jest.fn();
 
-    render(<ProductInput onClick={mockOnClick} disable={false} />);
+    render(<ProductInput onClick={mockOnClick} disabled={false} />);
 
     expect(screen.getByTestId("product-form")).toBeInTheDocument();
     expect(screen.getByTestId("product-entry")).toBeInTheDocument();
@@ -17,7 +17,7 @@ describe("ProductInput", () => {
     const mockOnClick = jest.fn();
     const mockProduct = "1 imported box of chocolates at 10.00";
 
-    render(<ProductInput onClick={mockOnClick} disable={false} />);
+    render(<ProductInput onClick={mockOnClick} disabled={false} />);
 
     const productInput = screen.getByTestId("product-entry");
 
@@ -32,7 +32,7 @@ describe("ProductInput", () => {
   it("should disable the input and the button", () => {
     const mockOnClick = jest.fn();
 
-    render(<ProductInput onClick={mockOnClick} disable={true} />);
+    render(<ProductInput onClick={mockOnClick} disabled={true} />);
 
     expect(screen.getByTestId("product-entry")).toBeDisabled();
     expect(screen.getByRole("button", { name: /add/i })).toBeDisabled();
@@ -42,7 +42,7 @@ describe("ProductInput", () => {
     const mockOnClick = jest.fn();
     const mockIncorrectProduct = "something something";
 
-    render(<ProductInput onClick={mockOnClick} disable={false} />);
+    render(<ProductInput onClick={mockOnClick} disabled={false} />);
 
     const productInput = screen.getByTestId("product-entry");
 

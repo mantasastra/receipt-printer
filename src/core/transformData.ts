@@ -12,7 +12,7 @@ export const transformData = (data: string): Entry => {
   const isValid = validate(data);
   if (!isValid) {
     throw new Error(
-      'Input should be of format: "QTY PRODUCT at PRICE" where PRICE must have 2 decimal places'
+      'Please use this format: "QTY PRODUCT PRICE". (e.g. 1 box of chocolate at 9.99)'
     );
   }
 

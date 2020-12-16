@@ -6,7 +6,7 @@
  * @returns boolean
  */
 export const validate = (input: string): boolean => {
-  const acceptableFormat = /^([0-9]+)\s*([a-zA-Z\s]+)\s*(at)\s*([0-9]*\.[0-9]{2})$/;
+  const acceptableFormat = /^([0-9]+)\s([a-zA-Z\s]+)\s(at)\s([0-9]*\.[0-9]{2})$/;
 
   return acceptableFormat.test(input);
 };

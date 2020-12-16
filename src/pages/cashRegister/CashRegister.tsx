@@ -6,11 +6,47 @@ import { calculateTax, createReceipt } from "../../core";
 
 import ProductInput from "../../components/product/ProductInput";
 import Receipt from "../../components/receipt/Receipt";
+import Button from "../../components/button/Button";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+const Card = styled.div`
+  padding: 50px 50px;
+  width: 50%;
+  background: #fafafa;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
+
+  @media only screen and (max-width: 700px) {
+    width: 70%;
+  }
+
+  @media only screen and (max-width: 500px) {
+    width: 90%;
+  }
+
+  @media only screen and (max-width: 400px) {
+    width: 100%;
+  }
+`;
+
+const Title = styled.h1`
+  padding: 20px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+
+  @media only screen and (max-width: 900px) {
+    justify-content: center;
+  }
 `;
 
 export type Entry = {
@@ -32,7 +68,6 @@ export type State = {
   isError: boolean;
 };
 
-// TODO Add styles
 const CashRegister = () => {
   const [state, setState] = useState<State>({
     entries: [],
@@ -72,13 +107,32 @@ const CashRegister = () => {
 
   return (
     <Container>
-      <h1 data-testid="title">Cash Register</h1>
-      <ProductInput onClick={setState} disable={printReceipt} />
-      <button onClick={handleClick} disabled={isError || printReceipt}>
-        Print Receipt
-      </button>
-      {printReceipt ? <Receipt data={receiptData} /> : null}
-      {printReceipt ? <button onClick={handleReset}>Start again</button> : null}
+      <Title data-testid="title">Cash Register</Title>
+      <Card>
+        <ProductInput onClick={setState} disabled={printReceipt} />
+
+        <ButtonContainer>
+          <Button
+            text="Print Receipt"
+            isError={isError}
+            disabled={printReceipt}
+            onClick={handleClick}
+            styles={{ bgColor: "#212121", textColor: "#ffffff" }}
+          />
+        </ButtonContainer>
+      </Card>
+      {printReceipt ? (
+        <>
+          <Receipt data={receiptData} />
+          <ButtonContainer>
+            <Button
+              text="Start again"
+              onClick={handleReset}
+              styles={{ bgColor: "#212121", textColor: "#ffffff" }}
+            />
+          </ButtonContainer>
+        </>
+      ) : null}
     </Container>
   );
 };

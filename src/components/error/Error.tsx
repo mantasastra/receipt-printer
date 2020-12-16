@@ -1,4 +1,29 @@
 import React from "react";
+import styled from "@emotion/styled";
+import Button from "../button/Button";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ErrorMessage = styled.span`
+  font-size: 0.94rem;
+  color: #b50706;
+  letter-spacing: 0.028rem;
+  padding-bottom: 10px;
+  overflow-wrap: break-word;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  button {
+    padding-left: 21px;
+    padding-right: 21px;
+  }
+`;
 
 type Props = {
   error: string;
@@ -6,12 +31,16 @@ type Props = {
 };
 
 const Error: React.FC<Props> = ({ error, handleClear }) => (
-  <div>
-    <p data-testid="error-message" style={{ color: "red" }}>
-      {error}
-    </p>
-    <button onClick={handleClear}>Clear</button>
-  </div>
+  <Container>
+    <ErrorMessage data-testid="error-message">{error}</ErrorMessage>
+    <ButtonContainer>
+      <Button
+        text="Clear"
+        onClick={handleClear}
+        styles={{ bgColor: "#e0e0e0", textColor: "#000000" }}
+      />
+    </ButtonContainer>
+  </Container>
 );
 
 export default Error;

@@ -1,12 +1,10 @@
-import React from "react";
 import styled from "@emotion/styled";
-
 import CashRegister from "./pages/cashRegister/CashRegister";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
 `;
 
