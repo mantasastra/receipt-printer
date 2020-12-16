@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 
 import data from "../../data/data";
-import { calculateTax, createReceipt } from "../../helpers/index";
+import { calculateTax, createReceipt } from "../../app/index";
 
 import ProductInput from "../../components/product/ProductInput";
 import Receipt from "../../components/receipt/Receipt";
@@ -55,14 +55,14 @@ const CashRegister = () => {
     }
   }, [entries, printReceipt]);
 
-  const handleClick = (): void => {
+  const handleClick = () => {
     setState((prevState) => ({
       ...prevState,
       printReceipt: true,
     }));
   };
 
-  const handleReset = (): void => {
+  const handleReset = () => {
     setState({
       entries: [],
       receiptData: [],

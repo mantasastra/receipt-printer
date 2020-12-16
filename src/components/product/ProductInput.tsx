@@ -2,7 +2,8 @@ import React, { ChangeEvent, useState } from "react";
 import styled from "@emotion/styled";
 
 import { State } from "../../pages/cashRegister/CashRegister";
-import { transformData, validate } from "../../helpers/index";
+import { transformData, validate } from "../../app/index";
+import Error from "../error/Error";
 
 const Form = styled.form`
   display: flex;
@@ -78,8 +79,7 @@ const ProductInput: React.FC<Props> = ({ onClick }) => {
         onChange={handleInput}
         value={input}
       />
-      {error ? <p style={{ color: "red" }}>{error}</p> : null}
-      {error ? <button onClick={handleClear}>Clear</button> : null}
+      {error ? <Error error={error} handleClear={handleClear} /> : null}
       <input type="submit" value="Add" disabled={error != null} />
     </Form>
   );
