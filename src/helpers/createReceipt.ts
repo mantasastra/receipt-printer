@@ -1,5 +1,6 @@
 import { EntryWithTax } from "../pages/cashRegister/CashRegister";
 import round from "./round";
+
 /**
  * Creates a receipt data from each product in entries.
  * This data is then used to render a receipt to the user.
@@ -18,12 +19,12 @@ const createReceipt = (entries: EntryWithTax[]): string[] => {
       totalPrice += taxedPrice;
       salesTaxes += taxApplied;
 
-      return `${quantity} ${imported} ${product}: ${taxedPrice}`;
+      return `${quantity} ${imported} ${product}: ${taxedPrice.toFixed(2)}`;
     }
   );
 
-  receiptData.push(`Sales Taxes: ${round(salesTaxes)}`);
-  receiptData.push(`Total: ${round(totalPrice)}`);
+  receiptData.push(`Sales Taxes: ${round(salesTaxes).toFixed(2)}`);
+  receiptData.push(`Total: ${round(totalPrice).toFixed(2)}`);
 
   return receiptData;
 };
