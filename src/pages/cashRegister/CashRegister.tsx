@@ -74,8 +74,8 @@ const CashRegister = () => {
   return (
     <Container>
       <h1>Cash Register</h1>
-      <ProductInput onClick={setState} />
-      <button onClick={handleClick} disabled={isError}>
+      <ProductInput onClick={setState} disable={printReceipt} />
+      <button onClick={handleClick} disabled={isError || printReceipt}>
         Print Receipt
       </button>
       {printReceipt ? <Receipt data={receiptData} /> : null}

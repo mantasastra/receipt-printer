@@ -12,9 +12,10 @@ const Form = styled.form`
 
 type Props = {
   onClick: React.Dispatch<React.SetStateAction<State>>;
+  disable: boolean;
 };
 
-const ProductInput: React.FC<Props> = ({ onClick }) => {
+const ProductInput: React.FC<Props> = ({ onClick, disable }) => {
   const [input, setInput] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
 
@@ -78,9 +79,10 @@ const ProductInput: React.FC<Props> = ({ onClick }) => {
         name="product"
         onChange={handleInput}
         value={input}
+        disabled={disable}
       />
       {error ? <Error error={error} handleClear={handleClear} /> : null}
-      <input type="submit" value="Add" disabled={error != null} />
+      <input type="submit" value="Add" disabled={error != null || disable} />
     </Form>
   );
 };
