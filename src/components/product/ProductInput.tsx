@@ -25,6 +25,7 @@ const ProductInput: React.FC<Props> = ({ onClick, disable }) => {
     const { value } = e.target;
 
     const isValid = validate(value);
+
     if (isValid) {
       setError(null);
 

@@ -38,6 +38,21 @@ describe("ProductInput", () => {
     expect(screen.getByRole("button", { name: /add/i })).toBeDisabled();
   });
 
-  // TODO Add error test
-  // TODO Add Clear test
+  it("should show an error if an incorrect format input is entered", async () => {
+    const mockOnClick = jest.fn();
+    const mockIncorrectProduct = "something something";
+
+    render(<ProductInput onClick={mockOnClick} disable={false} />);
+
+    const productInput = screen.getByTestId("product-entry");
+
+    userEvent.type(productInput, mockIncorrectProduct);
+    expect(productInput).toHaveValue(mockIncorrectProduct);
+
+    userEvent.click(screen.getByRole("button", { name: /add/i }));
+    expect(screen.getByTestId(/error-message/i)).toBeInTheDocument();
+
+    userEvent.click(screen.getByRole("button", { name: /clear/i }));
+    expect(productInput).toHaveValue("");
+  });
 });

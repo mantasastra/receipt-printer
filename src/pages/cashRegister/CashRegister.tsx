@@ -33,7 +33,6 @@ export type State = {
 };
 
 // TODO Add styles
-// TODO Add tests
 const CashRegister = () => {
   const [state, setState] = useState<State>({
     entries: [],
@@ -73,7 +72,7 @@ const CashRegister = () => {
 
   return (
     <Container>
-      <h1>Cash Register</h1>
+      <h1 data-testid="title">Cash Register</h1>
       <ProductInput onClick={setState} disable={printReceipt} />
       <button onClick={handleClick} disabled={isError || printReceipt}>
         Print Receipt

@@ -7,7 +7,9 @@ type Props = {
 
 const Error: React.FC<Props> = ({ error, handleClear }) => (
   <div>
-    <p style={{ color: "red" }}>{error}</p>
+    <p data-testid="error-message" style={{ color: "red" }}>
+      {error}
+    </p>
     <button onClick={handleClear}>Clear</button>
   </div>
 );
