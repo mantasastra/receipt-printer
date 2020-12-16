@@ -1,6 +1,6 @@
 import { Data } from "../data/data";
 import { Entry, EntryWithTax } from "../pages/cashRegister/CashRegister";
-import round from "./round";
+import { round } from "../helpers/index";
 
 /**
  * Checks whether base and import tax needs to be applied on a product.

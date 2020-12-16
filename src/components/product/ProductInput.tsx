@@ -2,7 +2,9 @@ import React, { ChangeEvent, useState } from "react";
 import styled from "@emotion/styled";
 
 import { State } from "../../pages/cashRegister/CashRegister";
-import { transformData, validate } from "../../app/index";
+import { transformData } from "../../app/index";
+import { validate } from "../../helpers/index";
+
 import Error from "../error/Error";
 
 const Form = styled.form`

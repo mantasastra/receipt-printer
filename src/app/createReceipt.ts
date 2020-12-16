@@ -1,5 +1,5 @@
 import { EntryWithTax } from "../pages/cashRegister/CashRegister";
-import round from "./round";
+import { round } from "../helpers/index";
 
 /**
  * Creates a receipt data from each product in entries.
