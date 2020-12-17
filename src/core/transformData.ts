@@ -5,6 +5,9 @@ import { validate } from "../helpers";
  * Extracts product description, quantity, price and checks
  * if the product is imported or not.
  *
+ * Also checks if an input format is valid.
+ * If not, throws an error.
+ *
  * @param data
  * @returns an error or an object containing extracted values
  */

@@ -21,13 +21,13 @@ const InputGroup = styled.div`
 
 const Input = styled.input<{ isError: string | null }>`
   width: 100%;
+  padding-top: 0.8rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.8rem;
   border: none;
   border-bottom: 0.12rem solid rgba(19, 19, 21, 0.6);
   height: 2rem;
   font-size: 1.06rem;
-  padding-top: 0.8rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.8rem;
   line-height: 147.6%;
 
   &:focus {
@@ -139,6 +139,7 @@ const ProductInput: React.FC<Props> = ({ onClick, disabled }) => {
             type="text"
             id="product"
             name="product"
+            placeholder="e.g. 1 box of chocolates at 9.99"
             onChange={handleInput}
             value={input}
             disabled={disabled}

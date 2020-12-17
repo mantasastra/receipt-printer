@@ -37,7 +37,6 @@ describe("calculateTax", () => {
     ];
 
     const result = calculateTax(mockProducts, mockTaxData);
-
     expect(result).toStrictEqual(expectedResult);
   });
 
@@ -59,8 +58,7 @@ describe("calculateTax", () => {
       },
     ];
 
-    expect(calculateTax(mockProducts, mockTaxDataWithExempt)).toStrictEqual(
-      expectedResult
-    );
+    const result = calculateTax(mockProducts, mockTaxDataWithExempt);
+    expect(result).toStrictEqual(expectedResult);
   });
 });

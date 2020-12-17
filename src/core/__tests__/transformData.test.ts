@@ -13,8 +13,8 @@ describe("transformData", () => {
       price: 12.99,
       isImported: true,
     };
-    const result = transformData(mockData);
 
+    const result = transformData(mockData);
     expect(result).toStrictEqual(expectedResult);
 
     mock.mockRestore();

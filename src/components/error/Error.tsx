@@ -8,10 +8,10 @@ const Container = styled.div`
 `;
 
 const ErrorMessage = styled.span`
+  padding-bottom: 10px;
   font-size: 0.94rem;
   color: #b50706;
   letter-spacing: 0.028rem;
-  padding-bottom: 10px;
   overflow-wrap: break-word;
 `;
 

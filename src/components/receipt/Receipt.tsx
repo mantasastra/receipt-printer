@@ -59,16 +59,16 @@ const PriceContainer = styled.div`
 `;
 
 const SalesTaxes = styled.p`
+  padding-top: 10px;
   text-transform: uppercase;
   font-style: italic;
-  padding-top: 10px;
 `;
 
 const Total = styled.p`
+  padding-top: 10px;
   text-transform: uppercase;
   font-size: 26px;
   font-weight: bold;
-  padding-top: 10px;
 `;
 
 type Props = {

@@ -15,6 +15,18 @@ const ButtonStyles = css`
   transform: translateZ(0);
   transition: box-shadow 0.5s cubic-bezier(0.39, 0.5, 0.15, 1.36);
 
+  &:hover {
+    box-shadow: 0 0 0 28px rgba(0, 0, 0, 0.25) inset;
+  }
+
+  &:active {
+    transform: translateY(3px);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
   &:disabled {
     background-color: #7f7f7f;
     color: #dddddd;
@@ -27,18 +39,6 @@ const ButtonStyles = css`
     &:hover {
       box-shadow: none;
     }
-  }
-
-  &:hover {
-    box-shadow: 0 0 0 28px rgba(0, 0, 0, 0.25) inset;
-  }
-
-  &:active {
-    transform: translateY(3px);
-  }
-
-  &:focus {
-    outline: none;
   }
 `;
 
@@ -67,30 +67,36 @@ type Styles = {
 
 type Props = {
   text: string;
+  styles: Styles;
   type?: string;
   isError?: boolean;
   disabled?: boolean;
   onClick?: () => void;
-  styles: Styles;
 };
 
 const Button: React.FC<Props> = ({
   text,
+  styles,
   type,
   isError,
   disabled,
   onClick,
-  styles,
 }) => {
   return type === "input" ? (
     <AddButton
+      data-testid="input-button"
       type="submit"
       value={text}
       disabled={isError || disabled}
       {...styles}
     />
   ) : (
-    <MainButton onClick={onClick} disabled={isError || disabled} {...styles}>
+    <MainButton
+      data-testid="button"
+      onClick={onClick}
+      disabled={isError || disabled}
+      {...styles}
+    >
       {text}
     </MainButton>
   );
