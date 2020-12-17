@@ -22,6 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test-coverage": "yarn test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,7 +45,9 @@
   },
   "jest": {
     "coveragePathIgnorePatterns": [
-      "src/data"
+      "src/data",
+      "src/index.tsx",
+      "src/reportWebVitals.ts"
     ]
   }
 }

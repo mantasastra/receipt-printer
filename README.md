@@ -27,6 +27,7 @@ To get a local copy up and running follow these simple steps.
    ```sh
    git clone https://github.com/mantasastra/cash-register-circuit.git
    ```
+   
 2. Install all the required packages
    ```sh
     yarn install
@@ -45,7 +46,7 @@ To get a local copy up and running follow these simple steps.
 
 3. To run tests with coverage
     ```sh 
-    yarn test --coverage 
+    yarn test-coverage 
    ```
    
 ## File Structure
