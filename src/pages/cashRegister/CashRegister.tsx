@@ -43,6 +43,16 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 10px;
+  animation: fadeIn 1s linear;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
   @media only screen and (max-width: 900px) {
     justify-content: center;

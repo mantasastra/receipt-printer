@@ -14,6 +14,16 @@ const Container = styled.div`
   background-position: left top;
   background-repeat: repeat-x;
   background-size: 10px auto;
+  animation: fadeIn 1s linear;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 
   @media only screen and (max-width: 700px) {
     width: 50%;
