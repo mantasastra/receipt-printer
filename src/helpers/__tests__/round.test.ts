@@ -1,4 +1,4 @@
-import { round } from "../round";
+import { round, roundUpToFiveCents } from "../round";
 
 describe("round", () => {
   it.each`
@@ -13,4 +13,22 @@ describe("round", () => {
   `("should round $input to $expectedOutput", ({ input, expectedOutput }) => {
     expect(round(input)).toBe(expectedOutput);
   });
+});
+
+describe("roundUpToFiveCents", () => {
+  it.each`
+    input        | expectedOutput
+    ${1.1301}    | ${1.15}
+    ${0.5625}    | ${0.6}
+    ${11.8125}   | ${11.85}
+    ${0.01}      | ${0.05}
+    ${99.5842}   | ${99.6}
+    ${12.594123} | ${12.6}
+    ${0.4723}    | ${0.5}
+  `(
+    "should round $input to $expectedOutput up to the nearest five cents",
+    ({ input, expectedOutput }) => {
+      expect(roundUpToFiveCents(input)).toBe(expectedOutput);
+    }
+  );
 });
