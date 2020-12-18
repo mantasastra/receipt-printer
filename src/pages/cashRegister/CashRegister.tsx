@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
 
 import data from "../../data/data";
@@ -87,21 +87,13 @@ const CashRegister = () => {
   });
   const { entries, receiptData, printReceipt, isError } = state;
 
-  useEffect(() => {
-    if (printReceipt) {
-      const entriesWithTax = calculateTax(entries, data);
-      const receipt = createReceipt(entriesWithTax);
+  const handlePrint = () => {
+    const entriesWithTax = calculateTax(entries, data);
+    const receipt = createReceipt(entriesWithTax);
 
-      setState((prevState) => ({
-        ...prevState,
-        receiptData: receipt,
-      }));
-    }
-  }, [entries, printReceipt]);
-
-  const handleClick = () => {
     setState((prevState) => ({
       ...prevState,
+      receiptData: receipt,
       printReceipt: true,
     }));
   };
@@ -126,7 +118,7 @@ const CashRegister = () => {
             text="Print Receipt"
             isError={isError}
             disabled={printReceipt}
-            onClick={handleClick}
+            onClick={handlePrint}
             styles={{ bgColor: "#212121", textColor: "#ffffff" }}
           />
         </ButtonContainer>

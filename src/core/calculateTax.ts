@@ -1,6 +1,6 @@
 import { Data } from "../data/data";
 import { Entry, EntryWithTax } from "../pages/cashRegister/CashRegister";
-import { round } from "../helpers";
+import { round, roundUpToFiveCents } from "../helpers";
 
 /**
  * Checks whether base and import tax needs to be applied on a product.
@@ -17,8 +17,12 @@ export const calculateTax = (entries: Entry[], data: Data): EntryWithTax[] => {
     const isExempt = data.exemptProductsFromBaseTax.some((product) =>
       entry.product.includes(product)
     );
-    const baseTax = isExempt ? 0 : basePrice * data.baseTaxRate;
-    const importTax = entry.isImported ? basePrice * data.importTaxRate : 0;
+    const baseTax = isExempt
+      ? 0
+      : roundUpToFiveCents(basePrice * data.baseTaxRate);
+    const importTax = entry.isImported
+      ? roundUpToFiveCents(basePrice * data.importTaxRate)
+      : 0;
 
     const taxApplied = round((baseTax + importTax) * quantity);
     const taxedPrice = round(basePrice * quantity + taxApplied);

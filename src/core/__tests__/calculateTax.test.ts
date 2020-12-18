@@ -12,7 +12,7 @@ describe("calculateTax", () => {
       product: "__PRODUCT_TWO__",
       quantity: 3,
       isImported: true,
-      price: 4.32,
+      price: 11.25,
     },
   ];
 
@@ -31,8 +31,8 @@ describe("calculateTax", () => {
       },
       {
         ...mockProducts[1],
-        taxApplied: 1.94,
-        taxedPrice: 14.9,
+        taxApplied: 5.25,
+        taxedPrice: 39,
       },
     ];
 
@@ -43,7 +43,7 @@ describe("calculateTax", () => {
   it("should exempt product from base tax if the product is in the exempt list", () => {
     const mockTaxDataWithExempt = {
       ...mockTaxData,
-      exemptProductsFromBaseTax: ["__PRODUCT__"],
+      exemptProductsFromBaseTax: ["__PRODUCT__", "__PRODUCT_TWO__"],
     };
     const expectedResult = [
       {
@@ -53,8 +53,8 @@ describe("calculateTax", () => {
       },
       {
         ...mockProducts[1],
-        taxApplied: 1.94,
-        taxedPrice: 14.9,
+        taxApplied: 1.8,
+        taxedPrice: 35.55,
       },
     ];
 
