@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import CashRegister from "./pages/cashRegister/CashRegister";
+import ReceiptPrinter from "./pages/receiptPrinter/ReceiptPrinter";
 
 const Container = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const Container = styled.div`
 const App = () => {
   return (
     <Container>
-      <CashRegister />
+      <ReceiptPrinter />
     </Container>
   );
 };

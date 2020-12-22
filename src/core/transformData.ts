@@ -1,4 +1,4 @@
-import { Entry } from "../pages/cashRegister/CashRegister";
+import { Entry } from "../pages/receiptPrinter/ReceiptPrinter";
 import { validate } from "../helpers";
 
 /**

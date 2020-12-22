@@ -1,7 +1,6 @@
 {
-  "name": "cash-register-circuit",
+  "name": "receipt-printer",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@emotion/react": "^11.1.2",
     "@emotion/styled": "^11.0.0",

@@ -1,5 +1,5 @@
 import { Data } from "../data/data";
-import { Entry, EntryWithTax } from "../pages/cashRegister/CashRegister";
+import { Entry, EntryWithTax } from "../pages/receiptPrinter/ReceiptPrinter";
 import { round, roundUpToFiveCents } from "../helpers";
 
 /**
