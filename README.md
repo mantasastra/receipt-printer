@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/mantasastra/receipt-printer.svg?branch=master)](https://travis-ci.com/mantasastra/receipt-printer)
+[![Build Status](https://travis-ci.com/mantasastra/receipt-printer.svg?branch=main)](https://travis-ci.com/mantasastra/receipt-printer)
 [![codecov](https://codecov.io/gh/mantasastra/receipt-printer/branch/main/graph/badge.svg?token=E2CTLWHQJI)](https://codecov.io/gh/mantasastra/receipt-printer)
 
 # Receipt Printer
