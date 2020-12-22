@@ -23,6 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test-coverage": "yarn test --coverage --watchAll",
+    "add-coverage-report": "codecov -t $CODECOV_TOKEN",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

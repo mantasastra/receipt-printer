@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mantasastra/receipt-printer.svg?branch=master)](https://travis-ci.com/mantasastra/receipt-printer)
+
 # Receipt Printer
 
 A receipt printer application that accepts lines of text

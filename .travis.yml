@@ -8,4 +8,4 @@ install:
 
 script:
   - yarn test-coverage
-  - codecov -f coverage/*.json
+  - yarn add-coverage-report
