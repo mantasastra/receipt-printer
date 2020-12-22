@@ -17,6 +17,10 @@ The process can be repeated by clicking `start again` button.
 The application is hosted on Netlify and can be accessed through this link:
 [Live App](https://receipt-printer.netlify.app)
 
+## Demo
+
+![Demo](https://i.imgur.com/18b7Weu.gif)
+
 ## Example of Input/Output
 
 Input
