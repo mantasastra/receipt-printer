@@ -7,5 +7,5 @@ install:
   - yarn
 
 script:
-  - yarn test-coverage
+  - yarn test-coverage-ci
   - yarn add-coverage-report
