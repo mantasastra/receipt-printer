@@ -5,9 +5,9 @@ export type Data = {
 };
 
 const data: Data = {
-  baseTaxRate: 0.1,
+  baseTaxRate: 0.15,
   importTaxRate: 0.05,
-  exemptProductsFromBaseTax: ["book", "chocolate", "pills"],
+  exemptProductsFromBaseTax: ["book", "chocolate", "pills", "bottle"],
 };
 
 export default data;

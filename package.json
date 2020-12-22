@@ -1,7 +1,6 @@
 {
-  "name": "cash-register-circuit",
+  "name": "receipt-printer",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@emotion/react": "^11.1.2",
     "@emotion/styled": "^11.0.0",
@@ -12,6 +11,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^16.9.8",
+    "codecov": "^3.8.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
@@ -23,6 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test-coverage": "yarn test --coverage --watchAll",
+    "test-coverage-ci": "yarn test --coverage --watchAll=false",
+    "add-coverage-report": "codecov -t $CODECOV_TOKEN",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

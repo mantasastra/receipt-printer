@@ -1,11 +1,11 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import CashRegister from "../CashRegister";
+import ReceiptPrinter from "../ReceiptPrinter";
 
-describe("CashRegister", () => {
+describe("ReceiptPrinter", () => {
   it("should print the receipt after inputting a product", () => {
-    render(<CashRegister />);
+    render(<ReceiptPrinter />);
 
     const input = screen.getByTestId("product-entry");
 
@@ -32,7 +32,7 @@ describe("CashRegister", () => {
   });
 
   it("should allow to input and print a receipt after the error has been cleared", () => {
-    render(<CashRegister />);
+    render(<ReceiptPrinter />);
 
     const input = screen.getByTestId("product-entry");
     const addButton = screen.getByRole("button", { name: /add/i });

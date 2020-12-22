@@ -1,4 +1,4 @@
-import { EntryWithTax } from "../pages/cashRegister/CashRegister";
+import { EntryWithTax } from "../pages/receiptPrinter/ReceiptPrinter";
 import { round } from "../helpers";
 
 /**

@@ -78,7 +78,7 @@ export type State = {
   isError: boolean;
 };
 
-const CashRegister = () => {
+const ReceiptPrinter = () => {
   const [state, setState] = useState<State>({
     entries: [],
     receiptData: [],
@@ -109,7 +109,7 @@ const CashRegister = () => {
 
   return (
     <Container>
-      <Title data-testid="title">Cash Register</Title>
+      <Title data-testid="title">Receipt Printer</Title>
       <Card>
         <ProductInput onClick={setState} disabled={printReceipt} />
 
@@ -139,4 +139,4 @@ const CashRegister = () => {
   );
 };
 
-export default CashRegister;
+export default ReceiptPrinter;

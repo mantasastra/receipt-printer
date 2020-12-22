@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import styled from "@emotion/styled";
 
-import { State } from "../../pages/cashRegister/CashRegister";
+import { State } from "../../pages/receiptPrinter/ReceiptPrinter";
 import { transformData } from "../../core";
 import { validate } from "../../helpers";
 
